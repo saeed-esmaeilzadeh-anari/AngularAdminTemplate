@@ -1,0 +1,77 @@
+<div class="card">
+    <div class="card-header bg-primary">
+        افزودن گروه جدید
+    </div>
+    <div class="card-body">
+        <div class="col-md-9">
+            <form [formGroup]="myForm" (ngSubmit)="save()">
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label>کد :</label>
+                        <input type="text" formControlName="id" class="form-control" />
+                        <span class="text-danger" *ngIf="myForm.controls.id.touched && myForm.controls.id.hasError('required')">
+                        مقدار کد اجباری می باشد
+                    </span>
+                    </div>
+                    <div class="form-group col">
+                        <label>نام گروه :</label>
+                        <input type="text" class="form-control" formControlName="categoryName" />
+                        <span class="text-danger" *ngIf="myForm.controls.categoryName.touched && myForm.controls.categoryName.hasError('required')">
+                        مقدار عنوان اجباری می باشد
+                    </span>
+                        <span class="text-danger" *ngIf="myForm.controls.categoryName.hasError('minlength')">
+                        حداقل 3 کاراکتر وارد نمایید
+                    </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label> توضیحات :</label>
+                    <textarea class="form-control" formControlName="description"></textarea>
+                    <span class="text-danger" *ngIf="myForm.controls.description.hasError('maxlength')">
+                        حداکثر 20 کاراکتر وارد نمایید
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>
+              <input type="checkbox" formControlName="isActive"/>
+              فعال
+          </label>
+                </div>
+                <!-- <div class="form-group">
+                    <app-file-upload formControlName="image"></app-file-upload>
+                </div> -->
+                <div class="card">
+                    <div class="card-header">
+                        <label> ویژگی های گروه محصول :</label>
+                        <a class="btn btn-dark btn-sm text-white" (click)="addNewFeature()">
+                            <i class="fa fa-plus fa-fw"></i> افزودن ویژگی جدید</a>
+                    </div>
+                    <div class="card-body">
+                        <div formArrayName="features" *ngFor="let feature of features.controls;let i=index;">
+                            <div class="form-row" formGroupName={{i}}>
+                                <div class="form-group col">
+                                    <label>عنوان ویژگی :</label>
+                                    <input type="text" formControlName="title" class="form-control" />
+                                </div>
+                                <div class="form-group col">
+                                    <label>نوع ویژگی :</label>
+                                    <input type="text" formControlName="type" class="form-control" />
+                                </div>
+                                <div class="form-group col">
+                                    <label>الویت نمایش  :</label>
+                                    <input type="text" formControlName="sort" class="form-control" />
+                                </div>
+                                <div class="form-group col-md-1 pt-2">
+                                    <button class="btn btn-danger btn-sm mt-4" (click)="removeFeature(i)">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">ذخیره</button>
+            </form>
+        </div>
+    </div>
+</div>

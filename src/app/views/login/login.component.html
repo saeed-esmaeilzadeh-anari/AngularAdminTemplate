@@ -1,0 +1,47 @@
+<ngx-ui-loader></ngx-ui-loader>
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <h1 style="font-size:20px;">سامانه سلامت</h1>
+                                <p class="text-muted">ورود به حساب کاربری</p>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="icon-user"></i></span>
+                                    </div>
+                                    <input type="text" [(ngModel)]="userName" class="form-control" placeholder="نام کاربری" autocomplete="username" required>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="icon-lock"></i></span>
+                                    </div>
+                                    <input type="password" [(ngModel)]="password" class="form-control" placeholder="رمز عبور" autocomplete="current-password" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button (click)="login()" type="button" class="btn btn-primary">ورود</button>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <button type="button" class="btn btn-link px-0">فراموشی رمز عبور</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                            <div class="card-body text-center">
+                                <div>
+                                    <h2>ساخت حساب کاربری</h2>
+                                    <button type="button" class="btn btn-primary active mt-3">ایجاد !</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

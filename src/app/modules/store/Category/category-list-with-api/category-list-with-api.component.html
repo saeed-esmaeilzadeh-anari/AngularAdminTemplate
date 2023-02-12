@@ -1,0 +1,101 @@
+<div class="card p-3">
+    <div class="card-header">
+        لیست گروه بندی محصولات
+    </div>
+    <div class="card-body" darkBackgroundColor bgColor="orange">
+        <div>
+            <h3>ViewChild Read Element Data:</h3>
+            Teacher Code : <input #code class="rainBow" />
+            <br />
+            <div #myContainer>---</div>
+            <button (click)="showTeacherCode()">Show Teacher Code</button>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>کد</th>
+                    <th>عنوان گروه</th>
+                    <th>توضیحات</th>
+                    <th>وضعیت</th>
+                    <th>درصد فروش</th>
+                    <th>
+                        json
+                    </th>
+                    <th>اعداد به حروف</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of categories; let i=index">
+                    <td>{{item.id | persianNumber}}</td>
+                    <td>{{item.categoryName | lowercase}}</td>
+                    <td>{{item.description | lowercase}}</td>
+                    <td>
+                        <ng-container *ngIf="item.isActive; else deActive">
+                            <i class="fa fa-check"></i>
+                        </ng-container>
+                        <ng-template #deActive>
+                            <i class="fa fa-remove"></i>
+                        </ng-template>
+                    </td>
+                    <td>
+                        {{ .93 | percent | persianNumber}}
+                    </td>
+                    <td>
+                        {{item | json | uppercase}}
+                    </td>
+                    <td>{{7560000 | numberToLetter}}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm m-2 text-white" (click)="showFeatures(i)">
+                            نمایش ویژگی ها
+                        </button>
+
+                        <a title="ویرایش" [routerLink]="['/store/category/edit/', item.id]" class="btn btn-warning btn-sm m-2">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <button title="حذف آیتم" class="btn btn-danger btn-sm m-2">
+                            <i class="fa fa-remove"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <app-category-info #categoryInfo></app-category-info>
+    </div>0
+</div>
+<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ویژگی های محصول</h4>
+                <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>کد ویژگی</th>
+                            <th>عنوان ویژگی</th>
+                            <th>نوع</th>
+                            <th>الویت نمایش</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of selectedCategoryFeatures; let i=index">
+                            <td>{{item.id}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.sort}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="myModal.hide()">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>

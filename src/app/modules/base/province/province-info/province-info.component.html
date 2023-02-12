@@ -1,0 +1,25 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <input formControlName="title" placeholder="نام استان">
+
+    <!-- <p>مقدار وارد شده: {{ myForm.get('title').value }}</p> -->
+    <div *ngIf="myForm.controls.title.touched && myForm.controls.title.hasError('required')" class="form-error">
+        نام استان اجباری است
+    </div>
+
+    <input formControlName="telCode" placeholder="کد تلفن">
+
+    <div *ngIf="myForm.controls.telCode.touched  && myForm.controls.telCode.hasError('required')" class="form-error">
+        کد تلفن اجباری می باشد
+    </div>
+    <br />
+    <textarea formControlName="description" placeholder="توضیحات"></textarea>
+
+    <div *ngIf="myForm.controls.email.touched  && myForm.controls.description.hasError('minlength')" class="form-error">
+        حداقل 15 کاراکتر وارد نمایید
+    </div>
+    <br />
+
+    <button type="submit">
+      ذخیره
+    </button>
+</form>

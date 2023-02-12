@@ -1,0 +1,15 @@
+app-header {
+    background: #0466a0 !important;
+}
+
+.app-header .nav-item .nav-link {
+    color: #fff;
+}
+
+.app-header .navbar-toggler-icon {
+    color: #fff;
+}
+
+.cursor {
+    cursor: pointer;
+}

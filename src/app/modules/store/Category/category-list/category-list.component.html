@@ -1,0 +1,33 @@
+<h1>Category List</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>isActive</th>
+            <th>Description</th>
+            <th>
+                Details
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [ngClass]="{'selected-row': item == selectedCategory}" *ngFor="let item of categories">
+            <td>{{item.id}}</td>
+            <td>{{item.categoryName}}</td>
+            <td>{{item.isActive}}</td>
+            <td>{{item.description}}</td>
+            <td><button (click)="setSelectedCategory(item)">Show Details</button></td>
+        </tr>
+    </tbody>
+</table>
+<hr />
+<!-- <img src=""/>
+<a href="address">asdasd</a> -->
+<app-category-details (setStatus)="setCategoryStatus($event)" [info]="selectedCategory"></app-category-details>
+
+<hr />
+<h4>Counter :{{counter}}</h4>
+<div>
+    Set Counter = <input [(ngModel)]="counter" />
+</div>

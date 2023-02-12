@@ -1,0 +1,14 @@
+<h3>{{info.categoryName}}</h3>
+<p>
+    {{info.description}}
+</p>
+<div>
+    وضعیت : {{info.isActive ? "فعال" : "غیرفعال"}}
+</div>
+<hr />
+<div>
+    <button (click)="setDescription()">تغییر توضیحات به حالت پیش فرض</button>
+    <button (click)="setStatus.emit(info.id)" class="btn btn-primary">
+        {{info.isActive ? "غیرفعال کردن گروه" : "فعال کردن گروه"}}
+    </button>
+</div>
