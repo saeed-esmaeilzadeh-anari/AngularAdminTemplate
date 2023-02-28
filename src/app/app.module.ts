@@ -24,7 +24,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, POSITION,
-  PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule, NgxUiLoaderRouterConfig } from 'ngx-ui-loader';
+  PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 
   import { SimpleNotificationsModule } from 'angular2-notifications';  
 
